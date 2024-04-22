@@ -1,15 +1,15 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import twaLogo from './assets/tapps.png'
-import viteLogo from '/vite.svg'
-import './App.css'
 
+import './App.css'
 import './index.css';
-import Navbar from './lib/Navbar.tsx'
-import Example from './lib/Example.tsx'
+
+
+// import Navbar from './lib/Navbar.tsx'
+
+import Example from './lib/Example.tsx' // existing navbar
 import WebApp from '@twa-dev/sdk';
 
-import { TonConnectButton, TonConnectUIProvider } from '@tonconnect/ui-react';
+
 
 
 function App() {
