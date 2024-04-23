@@ -1,16 +1,15 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import twaLogo from './assets/tapps.png'
-import viteLogo from '/vite.svg'
-import './App.css'
 
-import './index.css';
+
+
 import Navbar from './lib/Navbar.tsx'
-import Example from './lib/Example.tsx'
 import WebApp from '@twa-dev/sdk';
+import TonWeb from 'tonweb';
 
-import { TonConnectButton, TonConnectUIProvider } from '@tonconnect/ui-react';
 
+import './App.css'
+import './index.css';
+import Auctions from './lib/auth/Auctions.tsx';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -19,15 +18,15 @@ function App() {
 
   return (
     <>
-      <Example/>
+      <Navbar/>
 
 
- 
+      <Auctions/>
 
       <div className=''>
 
       </div>
-      <h1 className='font-bold my-20'>TWA + Vite + React</h1>
+      <h1 className='font-bold my-20 text-lg'>TON Name Service Bot tns.bot</h1>
 
       {/* <button className='text-indigo-500'>
         fff
