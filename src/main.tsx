@@ -4,7 +4,8 @@ import App from './App.tsx'
 import './index.css'
 
 import WebApp from '@twa-dev/sdk'
-import { TonConnectUI } from '@tonconnect/ui'
+import { TonConnectUIProvider } from '@tonconnect/ui-react'
+
 
 
 WebApp.ready();
@@ -13,6 +14,9 @@ WebApp.ready();
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <App />
+     <TonConnectUIProvider manifestUrl="https://f004.backblazeb2.com/file/trxmini-games-/tonconnect-mainfest.json">
+      <App />
+     </TonConnectUIProvider>
+
   </React.StrictMode>,
 )
