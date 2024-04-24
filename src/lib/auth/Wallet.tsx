@@ -28,7 +28,33 @@ export default function TONWallet() {
     const client = new Api(httpClient);
 
     
-
+    function timeSince(date:Date) {
+        //@ts-ignore
+        var seconds = Math.floor((new Date() - date) / 1000);
+      
+        var interval = seconds / 31536000;
+      
+        if (interval > 1) {
+          return Math.floor(interval) + " years";
+        }
+        interval = seconds / 2592000;
+        if (interval > 1) {
+          return Math.floor(interval) + " months";
+        }
+        interval = seconds / 86400;
+        if (interval > 1) {
+          return Math.floor(interval) + " days";
+        }
+        interval = seconds / 3600;
+        if (interval > 1) {
+          return Math.floor(interval) + " hours";
+        }
+        interval = seconds / 60;
+        if (interval > 1) {
+          return Math.floor(interval) + " minutes";
+        }
+        return Math.floor(seconds) + " seconds ago";
+      }
 
     async function WhoIsSearch(account:Account) {
         const wallet = tonweb.wallet.create({address: Account?.address, publicKey: Account?.publicKey, wc: 0})
@@ -39,7 +65,11 @@ export default function TONWallet() {
         const resolve = await client.accounts.accountDnsBackResolve(account.address)
         const current_auctions = await client.dns.getAllAuctions({tld: 'ton'})
         console.log(current_auctions)
-        console.log()
+        //@ts-ignore
+        console.log(current_auctions.data[0].date, current_auctions.data[0].domain)
+        let date = new Date(current_auctions.data[0].date*1000)
+        let auction_date = timeSince(date)
+        console.log(auction_date)
         //const dns = mawait client.dns.getDnsInfo('receivedotme.ton')
     
      console.log(resolve)

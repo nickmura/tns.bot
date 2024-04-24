@@ -10,6 +10,7 @@ import TonWeb from 'tonweb';
 import './App.css'
 import './index.css';
 import Auctions from './lib/auth/Auctions.tsx';
+import Example from './lib/auth/Example.tsx';
 
 function App() {
   const [count, setCount] = useState(0)
