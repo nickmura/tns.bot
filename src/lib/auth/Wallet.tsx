@@ -5,6 +5,7 @@ const tonweb = new TonWeb(new TonWeb.HttpProvider('https://toncenter.com/api/v2/
 import { TonConnectUIProvider, TonConnectButton, useTonWallet, Wallet, Account } from "@tonconnect/ui-react";
 import { createContext, useContext, useEffect } from "react";
 import { HttpClient, Api } from 'tonapi-sdk-js';
+import { timeSince } from "../state";
 const WalletContext = createContext<Wallet|null>(null);
 
 export default function TONWallet() {
@@ -28,33 +29,7 @@ export default function TONWallet() {
     const client = new Api(httpClient);
 
     
-    function timeSince(date:Date) {
-        //@ts-ignore
-        var seconds = Math.floor((new Date() - date) / 1000);
-      
-        var interval = seconds / 31536000;
-      
-        if (interval > 1) {
-          return Math.floor(interval) + " years";
-        }
-        interval = seconds / 2592000;
-        if (interval > 1) {
-          return Math.floor(interval) + " months";
-        }
-        interval = seconds / 86400;
-        if (interval > 1) {
-          return Math.floor(interval) + " days";
-        }
-        interval = seconds / 3600;
-        if (interval > 1) {
-          return Math.floor(interval) + " hours";
-        }
-        interval = seconds / 60;
-        if (interval > 1) {
-          return Math.floor(interval) + " minutes";
-        }
-        return Math.floor(seconds) + " seconds ago";
-      }
+
 
     async function WhoIsSearch(account:Account) {
         const wallet = tonweb.wallet.create({address: Account?.address, publicKey: Account?.publicKey, wc: 0})
