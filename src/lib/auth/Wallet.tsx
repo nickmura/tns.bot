@@ -45,8 +45,8 @@ export default function TONWallet() {
         let date = new Date(current_auctions.data[0].date*1000)
         let auction_date = timeSince(date)
         console.log(auction_date)
-        //const dns = mawait client.dns.getDnsInfo('receivedotme.ton')
-    
+
+        
      console.log(resolve)
 }
     
