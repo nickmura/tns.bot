@@ -8,13 +8,9 @@ import Auctions from './pages/Auctions.tsx';
 function App() {
   const [count, setCount] = useState(0)
 
-
-
   return (
     <>
       <Navbar/>
-
-
       <Auctions/>
 
       <div className=''>

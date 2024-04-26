@@ -5,6 +5,7 @@ const tonweb = new TonWeb(new TonWeb.HttpProvider('https://toncenter.com/api/v2/
 import { TonConnectUIProvider, TonConnectButton, useTonWallet, Wallet, Account } from "@tonconnect/ui-react";
 import { createContext, useContext, useEffect } from "react";
 import { HttpClient, Api } from 'tonapi-sdk-js';
+import { timeSince } from "../state";
 const WalletContext = createContext<Wallet|null>(null);
 
 export default function TONWallet() {
@@ -39,9 +40,13 @@ export default function TONWallet() {
         const resolve = await client.accounts.accountDnsBackResolve(account.address)
         const current_auctions = await client.dns.getAllAuctions({tld: 'ton'})
         console.log(current_auctions)
-        console.log()
-        //const dns = mawait client.dns.getDnsInfo('receivedotme.ton')
-    
+        //@ts-ignore
+        console.log(current_auctions.data[0].date, current_auctions.data[0].domain)
+        let date = new Date(current_auctions.data[0].date*1000)
+        let auction_date = timeSince(date)
+        console.log(auction_date)
+
+        
      console.log(resolve)
 }
     
