@@ -20,13 +20,9 @@ export default function Navbar() {
 
   return (
     <>
-    <div className='flex justify-between'>
-    <Wallet/>
-    </div>
-
-
+      <div className='flex justify-between'>
+        <Wallet />
+      </div>
     </>
-    
- 
   )
 }

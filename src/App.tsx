@@ -1,15 +1,9 @@
 import { useState } from 'react'
-
-
-
 import Navbar from './lib/Navbar.tsx'
 import WebApp from '@twa-dev/sdk';
-import TonWeb from 'tonweb';
-
-
 import './App.css'
 import './index.css';
-import Auctions from './lib/auth/Auctions.tsx';
+import Auctions from './pages/Auctions.tsx';
 
 function App() {
   const [count, setCount] = useState(0)
