@@ -4,7 +4,7 @@ function AuctionCard({ auction }) {
   console.log("AUCTION CARD", auction)
   return (
     <div> 
-        <h1>AUCTION CARD</h1>
+        <h1>{auction.domain}</h1>
     </div>
   )
 }
