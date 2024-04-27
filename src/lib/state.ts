@@ -25,3 +25,12 @@ export function timeSince(date:Date) {
     }
     return Math.floor(seconds) + " seconds ago";
   }
+
+export  function countDecimals(value) {
+    let count = 0;
+    while (value % 1 !== 0) {
+        value *= 10;
+        count++;
+    }
+    return count;
+}
