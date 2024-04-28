@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App.tsx';
+import Root from './Root.tsx';
 import './index.css';
 import WebApp from '@twa-dev/sdk';
 import { TonConnectUIProvider } from '@tonconnect/ui-react';
@@ -9,20 +9,19 @@ import store from './store.ts';
 import {
   createBrowserRouter,
   RouterProvider,
-  Route,
-  Link,
 } from "react-router-dom";
 import { createRoot } from "react-dom/client";
 import Auctions from './pages/Auctions/Auctions.tsx';
+import ErrorPage from './pages/ErrorPage/ErrorPage.tsx';
 
 WebApp.ready();
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: (
-      <App />
-    ),
+    element: <Root />,
+    errorElement: <ErrorPage />,
+    
   },
   {
     path: "auctions",
