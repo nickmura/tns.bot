@@ -9,11 +9,14 @@ import styles from "./Auctions.module.css"
 
 export default function Auctions() {
     const dispatch = useDispatch();
-    const Wallet = useTonWallet();
+    const Wallet = useTonWallet(); //@ts-ignore
     const auctions = useSelector(state => state.auctions.auctions);
 
+    
     useEffect(() => {
+        //@ts-ignore
         dispatch(fetchLatestAuctions(Wallet))
+        
     }, [Wallet])
 
     console.log("AUCTION CHECK", auctions)
@@ -24,7 +27,7 @@ export default function Auctions() {
                 <th className={styles.th}>Date Sold</th>
             </thead>
             <tbody className={styles.tbody}>
-                {
+                { //@ts-ignore
                     auctions?.map((e, i) => {
                         return <AuctionRow auction={e} index={i} key={e.domain}/>
                     })

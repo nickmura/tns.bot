@@ -21,7 +21,15 @@ export default function Navbar() {
   return (
     <>
       <div className='flex justify-between'>
-        <Wallet />
+        <button className='rounded-lg'>
+          Test
+        </button>
+        <div className='flex flex-row'>
+          <a href='/mydomains' className='text-white font-bold mt-2 hover:text-black'>My domains</a>
+          
+          <Wallet />
+        </div>
+
       </div>
     </>
   )

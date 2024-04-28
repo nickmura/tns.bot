@@ -8,7 +8,7 @@ export default defineConfig({
   build: {
     outDir: './docs'
   },
-  base: '/tnsbot/',
+
   optimizeDeps: {
     esbuildOptions: {
         // Node.js global to browser globalThis
