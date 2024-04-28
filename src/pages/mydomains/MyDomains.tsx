@@ -5,21 +5,10 @@ import TonWeb from 'tonweb';
 import { countDecimals } from '../../lib/state';
 
 //@ts-ignore
-function MyDomains({ domain, index }) {
+function MyDomains() {
 
-  if (!domain.price || !domain.date || !domain.bids || !domain.owner || !domain.domain) {
-    return
-  }
 
-  const isDomain = countDecimals(Number(TonWeb.utils.fromNano(String(domain.price)))) > 1 ? true: false
 
-  if (!isDomain) {
-    return
-  }
-
-  //@ts-ignore 
-  const timeDifferenceInSeconds = Math.floor((new Date() - (domain.date * 1000)) / 1000) * -1;
-  const isLive = timeDifferenceInSeconds > 3600 ? "not live" : "live"
 
   return (
     <>pizza73</>

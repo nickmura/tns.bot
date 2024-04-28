@@ -13,6 +13,7 @@ import {
 import { createRoot } from "react-dom/client";
 import Auctions from './pages/Auctions/Auctions.tsx';
 import ErrorPage from './pages/ErrorPage/ErrorPage.tsx';
+import MyDomains from './pages/mydomains/MyDomains.tsx';
 
 WebApp.ready();
 
@@ -29,10 +30,17 @@ const router = createBrowserRouter([
       <Auctions />
     ),
   },
+  {
+    path: "mydomains",
+    element: (
+      <MyDomains/>
+    ),
+  },
 ]);
-
+//@ts-ignore
 createRoot(document.getElementById("root")).render(
   <Provider store={store}>
+    
     <TonConnectUIProvider manifestUrl="https://f004.backblazeb2.com/file/trxmini-games-/tonconnect-mainfest.json">
       <RouterProvider router={router} />
     </TonConnectUIProvider>
