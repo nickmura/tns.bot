@@ -35,12 +35,10 @@ const router = createBrowserRouter([
       },
     ]
   },
-
 ]);
 //@ts-ignore
 createRoot(document.getElementById("root")).render(
   <Provider store={store}>
-
     <TonConnectUIProvider manifestUrl="https://f004.backblazeb2.com/file/trxmini-games-/tonconnect-mainfest.json">
       <RouterProvider router={router} />
     </TonConnectUIProvider>
