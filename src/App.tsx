@@ -4,6 +4,7 @@ import WebApp from '@twa-dev/sdk';
 import './App.css'
 import './index.css';
 import Auctions from './pages/Auctions.tsx';
+import Portfolio from './lib/auth/Portfolio.tsx';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -11,6 +12,7 @@ function App() {
   return (
     <>
       <Navbar/>
+    
       <Auctions/>
 
       <div className=''>
@@ -18,9 +20,7 @@ function App() {
       </div>
       <h1 className='font-bold my-20 text-lg'>TON Name Service Bot tns.bot</h1>
 
-      {/* <button className='text-indigo-500'>
-        fff
-      </button> */}
+      
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
@@ -28,7 +28,7 @@ function App() {
       </div>
 
 
-      {/*  */}
+      {/*    */}
       <div className="card">
         <button onClick={() => WebApp.showAlert(`Hello World! Current count is ${count}`)}>
             Show Alert

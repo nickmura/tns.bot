@@ -52,16 +52,32 @@ export default function TONWallet() {
     
     return (
         <>
-            {Wallet ? //@ts-ignore
-            <button className='rounded-lg'onClick={(e)=>WhoIsSearch(Account)}>
-                           Test
-            </button>
-            : <>
+            {Wallet ? //@ts-ignore 
+            <>
 
-            </>}
+                <div className='ml-'>
+                   
+
+                   
+                    
+                    <WalletContext.Provider value={Wallet}> 
+                        <TonConnectButton className='ml-2'/>
+                    </WalletContext.Provider>
+
+                </div>
+
+            </>
+
+            
+
+
+            : <>
             <WalletContext.Provider value={Wallet}> 
                 <TonConnectButton />
             </WalletContext.Provider>
+            </>}
+
+
 
 
         </>

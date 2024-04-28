@@ -4,6 +4,7 @@ import { timeSince } from '../../../lib/state';
 import TonWeb from 'tonweb';
 import { countDecimals } from '../../../lib/state';
 
+//@ts-ignore
 function AuctionRow({ auction, index }) {
 
   if (!auction.price || !auction.date || !auction.bids || !auction.owner || !auction.domain) {
@@ -16,6 +17,7 @@ function AuctionRow({ auction, index }) {
     return
   }
 
+  //@ts-ignore 
   const timeDifferenceInSeconds = Math.floor((new Date() - (auction.date * 1000)) / 1000) * -1;
   const isLive = timeDifferenceInSeconds > 3600 ? "not live" : "live"
 
