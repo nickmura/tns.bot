@@ -7,7 +7,6 @@ import { HttpClient, Api } from 'tonapi-sdk-js';
 
 const tonweb = new TonWeb(new TonWeb.HttpProvider('https://toncenter.com/api/v2/jsonRPC', { apiKey: import.meta.env.VITE_TONCENTER_API_KEY }));
 
-
 const initialState = { 
   auctions: [],
   wallet: null
@@ -39,7 +38,6 @@ export const fetchLatestAuctions = createAsyncThunk("auction/fetchLatestAuctions
   }
 }
 );
-
 
 const auctionSlice = createSlice({
   name: 'auction',
