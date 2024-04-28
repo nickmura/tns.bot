@@ -3,8 +3,8 @@
 import { useTonWallet } from "@tonconnect/ui-react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchLatestAuctions } from "../slices/AuctionSlice";
-import AuctionRow from "./components/AuctionCard/AuctionRow";
+import { fetchLatestAuctions } from "../../slices/AuctionSlice";
+import AuctionRow from "./components/AuctionsRow/AuctionRow";
 import styles from "./Auctions.module.css"
 
 export default function Auctions() {
@@ -19,7 +19,6 @@ export default function Auctions() {
         
     }, [Wallet])
 
-    console.log("AUCTION CHECK", auctions)
     return (
         <table className={styles.table}>
             <thead className={styles.thead}>

@@ -1,8 +1,8 @@
 import React from 'react'
 import styles from "./AuctionRow.module.css";
-import { timeSince } from '../../../lib/state';
+import { timeSince } from '../../../../lib/state';
 import TonWeb from 'tonweb';
-import { countDecimals } from '../../../lib/state';
+import { countDecimals } from '../../../../lib/state';
 
 //@ts-ignore
 function AuctionRow({ auction, index }) {

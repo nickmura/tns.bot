@@ -26,6 +26,8 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^9.1.1",
+    "react-router": "^6.23.0",
+    "react-router-dom": "^6.23.0",
     "tonapi-sdk-js": "^1.0.8",
     "tonweb": "0.0.59"
   },

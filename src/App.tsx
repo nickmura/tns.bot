@@ -3,7 +3,7 @@ import Navbar from './lib/Navbar.tsx'
 import WebApp from '@twa-dev/sdk';
 import './App.css'
 import './index.css';
-import Auctions from './pages/Auctions.tsx';
+import Auctions from './pages/Auctions/Auctions.tsx';
 import Portfolio from './lib/auth/Portfolio.tsx';
 
 function App() {
