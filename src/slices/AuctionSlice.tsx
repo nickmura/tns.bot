@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import TonWeb from "tonweb";
+
 import { useTonWallet } from "@tonconnect/ui-react";
 import { HttpClient, Api } from 'tonapi-sdk-js';
 
@@ -13,7 +14,7 @@ const initialState = {
 
 export const fetchLatestAuctions = createAsyncThunk("auction/fetchLatestAuctions", async (args, { dispatch, getState }) => {
   try {
-    const Wallet = args
+    const Wallet = args //@ts-ignore
     let Account = Wallet?.account;
 
     const httpClient = new HttpClient({
@@ -52,6 +53,7 @@ const auctionSlice = createSlice({
 
   },
 })
+
 
 export const { setAuctions, setWallet} = auctionSlice.actions
 export default auctionSlice.reducer

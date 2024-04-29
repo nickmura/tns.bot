@@ -11,7 +11,7 @@ export default function Auctions() {
     const dispatch = useDispatch();
     const Wallet = useTonWallet(); //@ts-ignore
     const auctions = useSelector(state => state.auctions.auctions);
-
+    console.log(auctions)
     
     useEffect(() => {
         //@ts-ignore
