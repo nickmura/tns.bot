@@ -18,8 +18,11 @@ function MyDomains() {
 
       useEffect(() => {
 
-        //@ts-ignore
-        dispatch(fetchUserDomains(Wallet))
+
+        if (Wallet) {        //@ts-ignore
+          dispatch(fetchUserDomains(Wallet))
+        }
+
         
       }, [Wallet])
 
@@ -27,11 +30,11 @@ function MyDomains() {
     <div className={styles.container}>
         <table className={styles.table}>
             <tbody className={styles.tbody}>
-              {JSON.stringify(domains)}
+              {/* {JSON.stringify(domains)} */}
                 { //@ts-ignore
                     domains?.map((e, i) => {
                         return <>
-                          <DomainsRow domain={e} index={i} key={e}/>
+                          <DomainsRow domain={e} index={i} key={e.domain}/>
                         </> 
                     })
                 }

@@ -28,7 +28,7 @@ export default function Auctions() {
             <tbody className={styles.tbody}>
                 { //@ts-ignore
                     auctions?.map((e, i) => {
-                        return <AuctionRow auction={e} index={i} key={e.domain}/>
+                        return <AuctionRow auction={e} index={i} key={e.auction}/>
                     })
                 }
             </tbody>
