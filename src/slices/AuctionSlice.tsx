@@ -2,7 +2,6 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import TonWeb from "tonweb";
 import { useTonWallet } from "@tonconnect/ui-react";
-import { createContext, useContext, useEffect } from "react";
 import { HttpClient, Api } from 'tonapi-sdk-js';
 
 const tonweb = new TonWeb(new TonWeb.HttpProvider('https://toncenter.com/api/v2/jsonRPC', { apiKey: import.meta.env.VITE_TONCENTER_API_KEY }));
@@ -31,6 +30,7 @@ export const fetchLatestAuctions = createAsyncThunk("auction/fetchLatestAuctions
     // const wallet = tonweb.wallet.create({ address: Account?.address, publicKey: Account?.publicKey, wc: 0 })
     // dispatch(setWallet(wallet))
     const current_auctions = await client.dns.getAllAuctions({ tld: 'ton' });
+    console.log("AUCTIONS", current_auctions)
     dispatch(setAuctions(current_auctions.data))
   } catch (error) {
     console.error("Error fetching auctions:", error);
