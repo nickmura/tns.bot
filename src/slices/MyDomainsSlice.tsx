@@ -10,7 +10,7 @@ const initialState = {
 };
 
 
-export const fetchUserDomains = createAsyncThunk("domains/fetchUserDomains", async (args, { dispatch, getState }) => {
+export const fetchUserDomains = createAsyncThunk("domains/fetchUserDomains", async (args, { dispatch }) => {
     try {
         const Wallet = args; 
             //@ts-ignore
@@ -26,16 +26,19 @@ export const fetchUserDomains = createAsyncThunk("domains/fetchUserDomains", asy
           } 
         }
       });
+
       const client = new Api(httpClient);
-  
-      // const wallet = tonweb.wallet.create({ address: Account?.address, publicKey: Account?.publicKey, wc: 0 })
-      // dispatch(setWallet(wallet))
-      const user_domains = await client.accounts.getAccountDnsExpiring(Account?.address); //@ts-ignore
-      console.log(user_domains.items)
-      dispatch(setDomains(user_domains.items))
+      console.log("ADDRESS CHECK", Account)
+      try {
+        const user_domains = await client.accounts.getAccountDnsExpiring(Account?.address); //@ts-ignore
+        console.log("domain check", user_domains.items, user_domains)
+        dispatch(setDomains(user_domains.items))
+      } catch (e) {
+        console.log("Domain fetching err:", e)
+      }
+
     } catch (error) {
-      console.error("Error fetching auctions:", error);
-      // Handle errors as appropriate for your application context
+      console.error("Error fetching domains:", error);
     }
   }
 );

@@ -11,33 +11,36 @@ import DomainsRow from './components/DomainsRow/DomainRow';
 
 //@ts-ignore
 function MyDomains() {
-      const dispatch = useDispatch();
-      const Wallet = useTonWallet(); //@ts-ignore
-      const domains = useSelector(state => state.domains.domains);
-      console.log(domains)
+  const dispatch = useDispatch();
+  const Wallet = useTonWallet(); //@ts-ignore
+  const domains = useSelector(state => state.domains.domains);
+  console.log("DOMAIN SELECT", domains)
 
-      useEffect(() => {
+  useEffect(() => {
+    if (Wallet) {
+      dispatch(fetchUserDomains(Wallet))
+    }
+    //@ts-ignore
 
-        //@ts-ignore
-        dispatch(fetchUserDomains(Wallet))
-        
-      }, [Wallet])
+
+  }, [Wallet])
 
   return (
     <div className={styles.container}>
-        <table className={styles.table}>
-            <tbody className={styles.tbody}>
-              {JSON.stringify(domains)}
-                { //@ts-ignore
-                    domains?.map((e, i) => {
-                        return <>
-                          <DomainsRow domain={e} index={i} key={e}/>
-                        </> 
-                    })
-                }
-            </tbody>
-        </table>
-{/* 
+      <table className={styles.table}>
+        <tbody className={styles.tbody}>
+          { //@ts-ignore
+            domains?.map((e, i) => {
+              return (
+                <>
+                  <DomainsRow domain={e} index={i} key={e} />
+                </>
+              )
+            })
+          }
+        </tbody>
+      </table>
+      {/* 
       <tr className={styles.tr}>
         <td className={styles.td}>{index}</td>
         <td className={styles.td}>{Domain.domain}</td>
@@ -49,7 +52,6 @@ function MyDomains() {
         <td className={styles.td}>{timeSince(new Date(Domain.date * 1000))}</td>
         <td className={styles.td}>{isLive}</td>
       </tr> */}
-      {JSON.stringify(domains)}
     </div>
   )
 }
