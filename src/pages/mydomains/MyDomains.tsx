@@ -23,24 +23,28 @@ function MyDomains() {
     //@ts-ignore
 
 
-  }, [Wallet])
+        if (Wallet) {        //@ts-ignore
+          dispatch(fetchUserDomains(Wallet))
+        }
+
+        
+      }, [Wallet])
 
   return (
     <div className={styles.container}>
-      <table className={styles.table}>
-        <tbody className={styles.tbody}>
-          { //@ts-ignore
-            domains?.map((e, i) => {
-              return (
-                <>
-                  <DomainsRow domain={e} index={i} key={e} />
-                </>
-              )
-            })
-          }
-        </tbody>
-      </table>
-      {/* 
+        <table className={styles.table}>
+            <tbody className={styles.tbody}>
+              {/* {JSON.stringify(domains)} */}
+                { //@ts-ignore
+                    domains?.map((e, i) => {
+                        return <>
+                          <DomainsRow domain={e} index={i} key={e.domain}/>
+                        </> 
+                    })
+                }
+            </tbody>
+        </table>
+{/* 
       <tr className={styles.tr}>
         <td className={styles.td}>{index}</td>
         <td className={styles.td}>{Domain.domain}</td>

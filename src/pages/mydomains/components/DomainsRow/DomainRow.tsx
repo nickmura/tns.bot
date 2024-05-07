@@ -11,24 +11,24 @@ function DomainRow({ domain, index }) {
     return
   }
 
-  const isDomain = countDecimals(Number(TonWeb.utils.fromNano(String(domain.price)))) > 1 ? true: false
+  // const isDomain = countDecimals(Number(TonWeb.utils.fromNano(String(domain.price)))) > 1 ? true: false
 
 
   //@ts-ignore 
-  const timeDifferenceInSeconds = Math.floor((new Date() - (auction.expiring_at * 1000)) / 1000) * -1;
-  const isLive = timeDifferenceInSeconds > 3600 ? "not live" : "live"
+  // const timeDifferenceInSeconds = Math.floor((new Date() - (auction.expiring_at * 1000)) / 1000) * -1;
+  // const isLive = timeDifferenceInSeconds > 3600 ? "not live" : "live"
 
   return (
     <tr className={styles.tr}>
       <td className={styles.td}>{index}</td>
       <td className={styles.td}>{domain.name}</td>
-      <td className={styles.td}>{Number(TonWeb.utils.fromNano(String(domain.expiring_at)))}</td>
+      <td className={styles.td}>{}</td>
       {/* <td className={styles.td}>
         {domain.bids}
         <p>bids</p>
       </td> */}
-      <td className={styles.td}>{timeSince(new Date(domain.expiring_at * 1000))}</td>
-      <td className={styles.td}>{isLive}</td>
+      {/* <td className={styles.td}>{timeSince(new Date(domain.expiring_at * 1000))}</td>
+      <td className={styles.td}>{isLive}</td> */}
     </tr>
   )
 }
