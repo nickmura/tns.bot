@@ -22,11 +22,13 @@ export default function Auctions() {
         <div className={styles.tableWrapper}>
             <table className={styles.table}>
                 <thead className={styles.thead}>
-                    <th className={styles.th}>Domain name</th>
-                    <th className={styles.th}>Price</th>
-                    <th className={styles.th}>Total bids</th>
-                    <th className={styles.th}>Date</th>
-                    <th className={styles.th}>Status</th>
+                    <tr>
+                        <th className={styles.th}>Domain name</th>
+                        <th className={styles.th}>Price</th>
+                        <th className={styles.th}>Total bids</th>
+                        <th className={styles.th}>Date</th>
+                        <th className={styles.th}>Status</th>
+                    </tr>
                 </thead>
                 <tbody className={styles.tbody}>
                     {
