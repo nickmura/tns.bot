@@ -23,15 +23,19 @@ function AuctionRow({ auction, index }) {
 
   return (
     <tr className={styles.tr}>
-      <td className={styles.td}>{index}</td>
+      {/* <td className={styles.td}>{index}</td> */}
       <td className={styles.td}>{auction.domain}</td>
-      <td className={styles.td}>{Number(TonWeb.utils.fromNano(String(auction.price)))}</td>
       <td className={styles.td}>
-        {auction.bids}
-        <p>bids</p>
+        <div className={styles.price}>
+          <img src="/icon.png" alt="TON" />
+          {Number(TonWeb.utils.fromNano(String(auction.price))).toFixed(3)}
+        </div>
+      </td>
+      <td className={styles.td} style={{ textAlign: "center" }}>
+        <p>{auction.bids} bids</p>
       </td>
       <td className={styles.td}>{timeSince(new Date(auction.date * 1000))}</td>
-      <td className={styles.td}>{isLive}</td>
+      <td className={styles.td}><span className={isLive === "live" ? styles.live : undefined}>{isLive}</span></td>
     </tr>
   )
 }
