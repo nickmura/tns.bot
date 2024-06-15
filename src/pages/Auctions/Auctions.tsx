@@ -1,8 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useTonWallet } from "@tonconnect/ui-react";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -16,8 +17,9 @@ export default function Auctions() {
     const dispatch = useDispatch();
     const Wallet = useTonWallet();
     const auctions = useSelector((state: RootState) => state.auctions.auctions);
+    const filters = useSelector((state: RootState) => state.filters);
 
-    const { filter } = useSelector((state: RootState) => state.filters);
+    const [filtered, setFiltered] = useState<any[]>(auctions);
 
     useEffect(() => {
         //@ts-ignore
@@ -26,8 +28,33 @@ export default function Auctions() {
 
     // Filter
     useEffect(() => {
-        console.log(filter);
-    }, [filter]);
+        let newAuctions: any[] = [...auctions];
+
+        // Search filter
+        const filterText: string = filters.filter;
+        if (filterText) {
+            newAuctions = auctions.filter((a: any) => a.domain.includes(filterText))
+        }
+
+        // Sorting
+        if (filters?.sortType) {
+            const multiplier = filters.sortOrder === "ascending" ? 1 : -1;
+
+            switch (filters.sortType) {
+                case "bids":
+                    newAuctions.sort((a, b) => (a.bids - b.bids) * multiplier)
+                    break;
+                case "price":
+                    newAuctions.sort((a, b) => (a.price - b.price) * multiplier)
+                    break;
+                case "date":
+                    newAuctions.sort((a, b) => (a.date - b.date) * multiplier)
+                    break;
+            }
+        }
+
+        setFiltered(newAuctions);
+    }, [filters, auctions]);
 
     return (
         <>
@@ -45,13 +72,12 @@ export default function Auctions() {
                 </thead>
                 <tbody className={styles.tbody}>
                     {
-                        auctions?.map((e, i) => {
+                        filtered?.map((e, i) => {
                             return (
                                 <AuctionRow
                                     auction={e}
                                     index={i}
-                                    //@ts-ignore
-                                    key={e.auction}
+                                    key={i}
                                 />
                             );
                         })

@@ -22,10 +22,8 @@ const filtersSlice = createSlice({
     setSort(state, { payload } : { payload: ISort }) {
       state.sortOrder = payload.order;
       state.sortType = payload.type;
-      console.log(state);
     },
     setFilter(state, { payload }) {
-      console.log(state)
       state.filter = payload;
     },
   },

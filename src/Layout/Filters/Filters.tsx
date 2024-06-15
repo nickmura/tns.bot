@@ -1,6 +1,6 @@
 "use client";
 
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { IoSearchSharp } from "react-icons/io5";
 import { FaChevronUp, FaChevronDown } from "react-icons/fa6";
 import { setFilter, setSort } from "../../slices/FilterSlice";
@@ -8,6 +8,9 @@ import type { RootState } from "../../store";
 import styles from "./Filters.module.css";
 
 export default function Filters() {
+
+  const dispatch = useDispatch();
+
   const { sortType, sortOrder } = useSelector(
     (state: RootState) => state.filters
   );
@@ -16,10 +19,10 @@ export default function Filters() {
     console.log(type, sortType, sortOrder);
     if (type === sortType) {
       // Change order
-      if (!sortOrder) setSort({ type, order: "ascending" });
-      else if (sortOrder === "descending") setSort({ type, order: "ascending" });
-      else setSort({ type, order: "descending" });
-    } else setSort({ type, order: "ascending" });
+      if (!sortOrder) dispatch(setSort({ type, order: "ascending" }));
+      else if (sortOrder === "descending") dispatch(setSort({ type, order: "ascending" }));
+      else dispatch(setSort({ type, order: "descending" }));
+    } else dispatch(setSort({ type, order: "ascending" }));
   }
 
   return (
@@ -28,18 +31,18 @@ export default function Filters() {
         <IoSearchSharp />
         <input
           placeholder="Search t.me/ton names..."
-          onChange={(e) => setFilter(e.target.value)}
+          onChange={(e) => dispatch(setFilter(e.target.value))}
           spellCheck={false}
         />
       </div>
       <div className={styles.sorts}>
-        <SortButton type="bids" order={sortOrder} change={changeOrder}>
+        <SortButton type="bids" order={"bids" === sortType ? sortOrder : null} change={changeOrder}>
           Auction Bids
         </SortButton>
-        <SortButton type="price" order={sortOrder} change={changeOrder}>
+        <SortButton type="price" order={"price" === sortType ? sortOrder : null} change={changeOrder}>
           Price
         </SortButton>
-        <SortButton type="date" order={sortOrder} change={changeOrder}>
+        <SortButton type="date" order={"date" === sortType ? sortOrder : null} change={changeOrder}>
           Date
         </SortButton>
       </div>
