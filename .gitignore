@@ -16,6 +16,9 @@ ton.dns/*
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
+
+./simple-counter/node_modules
+./simple-counter/build
 .idea
 .DS_Store
 *.suo
