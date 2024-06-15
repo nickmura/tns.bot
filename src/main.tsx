@@ -9,9 +9,9 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import { createRoot } from "react-dom/client";
-import Auctions from './pages/Auctions/Auctions.tsx';
-import ErrorPage from './pages/ErrorPage/ErrorPage.tsx';
-import MyDomains from './pages/MyDomains/MyDomains.tsx';
+import Auctions from './pages/Auctions/Auctions';
+import ErrorPage from './pages/ErrorPage/ErrorPage';
+import MyDomains from './pages/mydomains/MyDomains';
 
 WebApp.ready();
 
