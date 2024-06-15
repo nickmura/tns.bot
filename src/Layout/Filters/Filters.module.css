@@ -1,0 +1,35 @@
+.filterContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.searchbar {
+    position: relative;
+
+    & svg {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 10px;
+        font-size: 22px;
+    }
+
+    & input {
+        width: 100%;
+        padding: 10px 10px 10px 40px;
+        border-radius: 8px;
+        border: 1px solid rgba(132, 132, 132, 0.283);
+        outline: none;
+    }
+}
+
+.sorts {
+    display: flex;
+    gap: 10px;
+
+    & button {
+        outline: none;
+    }
+}
