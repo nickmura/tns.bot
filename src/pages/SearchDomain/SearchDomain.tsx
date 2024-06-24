@@ -22,7 +22,7 @@ export default function SearchDomain() {
 	const tempDomainBids = useSelector((state: RootState) => state.searchDomain.domainBids)
 	const tempAdditionalDomains = useSelector((state: RootState) => state.searchDomain.additionalDomains)
 
-	const [domainInfo, setDomainInfo] = useState<any[]>(tempDomainInfo);
+	const [domainInfo, setDomainInfo] = useState<any[]>([]);
 	const [domainBids, setDomainBids] = useState<any[]>(tempDomainBids);
 	const [additionalDomains, setAdditionalDomains] = useState<any[]>(tempAdditionalDomains);
 
@@ -37,7 +37,7 @@ export default function SearchDomain() {
 		setDomainInfo(datas)
 		setDomainBids(tempDomainBids)
 		setAdditionalDomains(tempAdditionalDomains)
-		console.log(domainInfo)
+		console.log(domainInfo, )
 	}, [tempDomainInfo, tempDomainBids, tempAdditionalDomains])
 
 
