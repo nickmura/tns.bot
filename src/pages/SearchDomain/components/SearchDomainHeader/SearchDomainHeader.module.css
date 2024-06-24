@@ -1,0 +1,72 @@
+.searchDomainWrapper {
+    display: flex;
+    justify-content: space-between;
+    padding: 21px 0 35px 0;
+}
+
+.searchDomainWrapper .left {
+    display: flex;
+}
+
+.searchDomainWrapper .left span {
+    color: rgb(141, 148, 153);
+}
+
+.searchDomainWrapper h3 {
+    font-size: 29px;
+    color: white;
+    margin-right: 21px;
+    font-weight: 600;
+}
+
+.searchDomainWrapper span {
+    border-radius: 213px;
+    font-size: 17px;
+    border: 1px solid cornflowerblue;
+    padding: 5px 15px 5px 15px;
+    display: flex;
+    margin: 3px 11px;
+    cursor: pointer;
+    color: rgb(209, 206, 206);
+    transition: ease-in-out 0.3s;
+    font-weight: 500;
+}
+
+.searchDomainWrapper span:hover {
+    color: rgb(151, 180, 233);
+}
+
+.searchDomainWrapper span svg {
+    color: cornflowerblue;
+    font-size: 23px;
+    padding-left: 5px;
+}
+
+.searchDomainWrapper .right {
+    display: flex;
+}
+
+.tgIcon {
+    font-size: 35px;
+    color: cornflowerblue;
+}
+
+@media only screen and (max-width: 1024px) {
+    .searchDomainWrapper {
+        flex-direction: column;
+    }
+
+    .searchDomainWrapper .right {
+        flex-direction: column;
+        /* align-items: center; */
+    }
+
+    .searchDomainWrapper .tgIcon {
+        width: 100%;
+    }
+
+    .searchDomainWrapper span {
+        font-size: 13px;
+        
+    }
+}
