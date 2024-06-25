@@ -21,6 +21,7 @@
   border-radius: 12px;
   border: 1px solid rgba(132, 132, 132, 0.283);
   width: 100%;
+  overflow-x: scroll;
 }
 
 .table {

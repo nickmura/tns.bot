@@ -9,7 +9,6 @@ function AdditionalDomainRow({ item, index }) {
     setDomainname(item.name)
   }, [item])
   
-
   return (
     <tr className={styles.tr}>
       <td className={styles.td}>{domainName}</td>

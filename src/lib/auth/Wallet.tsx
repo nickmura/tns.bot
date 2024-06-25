@@ -1,19 +1,17 @@
-import TonWeb  from "tonweb";
-const tonweb = new TonWeb(new TonWeb.HttpProvider('https://toncenter.com/api/v2/jsonRPC', {apiKey: import.meta.env.VITE_TONCENTER_API_KEY}));
+import TonWeb from "tonweb";
+const tonweb = new TonWeb(new TonWeb.HttpProvider('https://toncenter.com/api/v2/jsonRPC', { apiKey: import.meta.env.VITE_TONCENTER_API_KEY }));
 
 
 import { TonConnectUIProvider, TonConnectButton, useTonWallet, Wallet, Account } from "@tonconnect/ui-react";
 import { createContext, useContext, useEffect } from "react";
 import { HttpClient, Api } from 'tonapi-sdk-js';
 import { timeSince } from "../state";
-const WalletContext = createContext<Wallet|null>(null);
+const WalletContext = createContext<Wallet | null>(null);
 
 export default function TONWallet() {
     //PUBLIC API KEY
-   
     const Wallet = useTonWallet()
     let Account = Wallet?.account
-
     // Configure the HTTP client with your host and token
     const httpClient = new HttpClient({
         baseUrl: 'https://tonapi.io/',
@@ -25,59 +23,35 @@ export default function TONWallet() {
         }
     });
     const client = new Api(httpClient);
-
-    
-
-
-    async function WhoIsSearch(account:Account) {
-        const wallet = tonweb.wallet.create({address: Account?.address, publicKey: Account?.publicKey, wc: 0})
+    async function WhoIsSearch(account: Account) {
+        const wallet = tonweb.wallet.create({ address: Account?.address, publicKey: Account?.publicKey, wc: 0 })
         console.log(wallet)
 
         const address = await tonweb.provider.getExtendedAddressInfo(String(wallet.address))
 
         const resolve = await client.accounts.accountDnsBackResolve(account.address)
-        const current_auctions = await client.dns.getAllAuctions({tld: 'ton'})
+        const current_auctions = await client.dns.getAllAuctions({ tld: 'ton' })
         console.log(current_auctions)
         //@ts-ignore
-        console.log(current_auctions.data[0].date, current_auctions.data[0].domain)
-        let date = new Date(current_auctions.data[0].date*1000)
+        let date = new Date(current_auctions.data[0].date * 1000)
         let auction_date = timeSince(date)
-        console.log(auction_date)
+    }
 
-        
-     console.log(resolve)
-}
-    
     return (
         <>
             {Wallet ? //@ts-ignore 
-            <>
-
-                <div className='ml-'>
-                   
-
-                   
-                    
-                    <WalletContext.Provider value={Wallet}> 
-                        <TonConnectButton className='ml-2'/>
+                <>
+                    <div className='ml-'>
+                        <WalletContext.Provider value={Wallet}>
+                            <TonConnectButton className='ml-2' />
+                        </WalletContext.Provider>
+                    </div>
+                </>
+                : <>
+                    <WalletContext.Provider value={Wallet}>
+                        <TonConnectButton />
                     </WalletContext.Provider>
-
-                </div>
-
-            </>
-
-            
-
-
-            : <>
-            <WalletContext.Provider value={Wallet}> 
-                <TonConnectButton />
-            </WalletContext.Provider>
-            </>}
-
-
-
-
+                </>}
         </>
     )
 
