@@ -6,15 +6,27 @@ import { FaTelegram } from "react-icons/fa";
 import { toUserFriendlyAddress } from "@tonconnect/sdk";
 
 
-export default function SearchDomainHeader(data) {
+interface SearchDomainHeaderProps {
+    data: {
+        name: string;
+        expiring_at: number;
+        item: {
+          owner: {
+            address: string;
+          };
+        };
+      };
+  }
+
+export default function SearchDomainHeader(data:SearchDomainHeaderProps) {
     const [domainName, setDomainName] = useState('')
     const [expiring, setExpiring] = useState(0)
-    const [owner, setOwner] = useState(null)
+    const [owner, setOwner] = useState(null || '')
     useEffect(() => {
+        console.log(data)
         setDomainName(data?.data?.name)
         setExpiring(data?.data?.expiring_at)
         setOwner(data?.data?.item?.owner?.address)
-        console.log("domain recieved: ", data?.data)
     }, [data])
 
     const shortenAddress = (add:string) => {

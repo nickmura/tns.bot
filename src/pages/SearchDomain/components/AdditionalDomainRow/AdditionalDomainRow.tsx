@@ -8,7 +8,7 @@ import { countDecimals } from '../../../../lib/state';
 function AdditionalDomainRow({ item, index }) {
   const [domainName, setDomainname] = useState('')
   useEffect(() => {
-    setDomainname(item)
+    setDomainname(item.name)
   }, [item])
   
 

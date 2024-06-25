@@ -44,7 +44,7 @@ export default function SearchDomain() {
 	return (
 		<>
 			{
-				domainInfo?.map((data, index) => {
+				domainInfo?.map((data) => {
 					return (
 						<SearchDomainHeader 
 							 data={data}
@@ -65,7 +65,7 @@ export default function SearchDomain() {
 						</thead>
 						<tbody className={styles.tbody}>
 							{
-								domainBids?.data?.map((e, i) => {
+								(domainBids as { data?: any[] })?.data?.map((e:object, i:number) => {
 									return (
 										<BidStatusRow
 											item={e}
@@ -91,10 +91,10 @@ export default function SearchDomain() {
 						</thead>
 						<tbody className={styles.tbody}>
 							{
-								additionalDomains?.items?.map((e, i) => {
+								(additionalDomains as {items? : any[]})?.items?.map((e:object, i:number) => {
 								    return (
 								        <AdditionalDomainRow
-								            item={e.name}
+								            item={e}
 								            index={i}
 								            key={i}
 								        />
