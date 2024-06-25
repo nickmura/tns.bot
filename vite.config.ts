@@ -6,7 +6,8 @@ import { NodeGlobalsPolyfillPlugin } from '@esbuild-plugins/node-globals-polyfil
 export default defineConfig({
   plugins: [react(), basicSsl()],
   build: {
-    outDir: './docs'
+    outDir: './dist',
+    chunkSizeWarningLimit: 1600, 
   },
 
   optimizeDeps: {
@@ -20,7 +21,7 @@ export default defineConfig({
             NodeGlobalsPolyfillPlugin({
                 buffer: true
             })
-        ]
+        ],
     }
 }
 });
