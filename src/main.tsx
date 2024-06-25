@@ -12,6 +12,7 @@ import { createRoot } from "react-dom/client";
 import Auctions from './pages/Auctions/Auctions';
 import ErrorPage from './pages/ErrorPage/ErrorPage';
 import MyDomains from './pages/mydomains/MyDomains';
+import MiniApp from './pages/MiniApp/MiniApp.tsx';
 import SearchDomain from './pages/SearchDomain/SearchDomain.tsx';
 WebApp.ready();
 
@@ -22,17 +23,21 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "/:id",
-        element: <SearchDomain />,
-      },
-      {
         path: "auctions",
         element: <Auctions />,
       },
       {
         path: "mydomains",
         element: <MyDomains />,
-      }
+      },
+      {
+        path:"/miniapp",
+        element: <MiniApp/>
+      },
+      {
+        path: "/:id",
+        element: <SearchDomain />,
+      },
     ],
   },
 ]);

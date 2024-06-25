@@ -16,7 +16,6 @@ export default function Filters() {
   );
 
   function changeOrder(type: string) {
-    console.log(type, sortType, sortOrder);
     if (type === sortType) {
       // Change order
       if (!sortOrder) dispatch(setSort({ type, order: "ascending" }));

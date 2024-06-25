@@ -17,9 +17,6 @@ export default function Portfolio() {
 
     const Wallet = useTonWallet()
     let Account = Wallet?.account
-    console.log(Account?.address)
-
-
 
     // Configure the HTTP client with your host and token
     const httpClient = new HttpClient({
@@ -32,7 +29,6 @@ export default function Portfolio() {
         }
     });
     const client = new Api(httpClient);
-
     
     async function WhoIsSearch() {
         const wallet = tonweb.wallet.create({address: Account?.address, publicKey: Account?.publicKey, wc: 0})
@@ -41,22 +37,10 @@ export default function Portfolio() {
         const resolve = await client.accounts.getAccountDnsExpiring(String(Account?.address));
         const current_auctions = await client.dns.getAllAuctions({tld: 'ton'});
 
-
-
-
-        console.log(resolve);
-
         setDomains(resolve)
-        console.log(current_auctions.data[0].date, current_auctions.data[0].domain);
         let date = new Date(current_auctions.data[0].date*1000);
-
-
-
         let auction_date = timeSince(date)
-        console.log(auction_date)
-
             
-        console.log(resolve)
     }
     
     return (
@@ -67,8 +51,6 @@ export default function Portfolio() {
                 <button className='text-2xl font-bold' onClick={()=>WhoIsSearch()} >Your .ton names</button>
                 {JSON.stringify(domains)}
             </div>
-
-
         </>
     )
 

@@ -1,0 +1,25 @@
+.infoText {
+  display: block;
+}
+
+.searchbar {
+  width: 50%;
+  padding: 10px 10px 10px 40px;
+  border-radius: 8px;
+  border: 1px solid rgba(182, 207, 230, 0.283);
+  outline: none;
+  font-size: 16px;
+  outline: none;
+}
+
+.searchbar:hover
+
+.searchbar:focus {
+  outline: 2px solid rgb(129, 179, 212)
+}
+
+.errorText {
+  font-size: 23px;
+  font-weight: 700;
+  display: block;
+}
