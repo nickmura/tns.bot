@@ -36,6 +36,21 @@ td:first-child {
     font-weight: 500;
 }
 
+.view {
+    display: block;
+    width: fit-content;
+    margin: 0 auto;
+    color: rgb(74, 144, 201);
+    border: 1px solid rgb(106, 147, 201);
+    padding: 3px 7px;
+    font-weight: 500;
+    transition: 0.3s ease-in-out all;
+}
+
+.view:hover {
+    color: aliceblue;
+}
+
 .price {
     display: flex;
     align-items: center;

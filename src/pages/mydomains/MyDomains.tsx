@@ -8,33 +8,35 @@ import { fetchUserDomains } from '../../slices/MyDomainsSlice';
 import { useTonWallet } from '@tonconnect/ui-react';
 import { useDispatch, useSelector } from 'react-redux';
 import DomainsRow from './components/DomainsRow/DomainRow';
+import { AppDispatch } from '../../store';
 
 //@ts-ignore
 function MyDomains() {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const Wallet = useTonWallet(); //@ts-ignore
   const domains = useSelector(state => state.domains.domains);
+  console.log("DOMAIN SELECT", domains)
 
   useEffect(() => {
-    if (Wallet) {
+    if (Wallet) {        //@ts-ignore
       dispatch(fetchUserDomains(Wallet))
-    }        
+    }
   }, [Wallet])
 
   return (
     <div className={styles.container}>
-        <table className={styles.table}>
-            <tbody className={styles.tbody}>
-              {/* {JSON.stringify(domains)} */}
-                { //@ts-ignore
-                    domains?.map((e, i) => {
-                        return <>
-                          <DomainsRow domain={e} index={i} key={e.domain}/>
-                        </> 
-                    })
-                }
-            </tbody>
-        </table>
+      <table className={styles.table}>
+        <tbody className={styles.tbody}>
+          {/* {JSON.stringify(domains)} */}
+          { //@ts-ignore
+            domains?.map((e, i) => {
+              return <>
+                <DomainsRow domain={e} index={i} key={e.domain} />
+              </>
+            })
+          }
+        </tbody>
+      </table>
 
       {/* <tr className={styles.tr}>
         <td className={styles.td}>{index}</td>

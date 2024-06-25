@@ -35,7 +35,7 @@ export default function Navbar() {
       <div className={styles.searchContainer}>
         <GoSearch className={styles.searchIcon} />
         <input type="text"
-          placeholder='Search for .ton & t.me names...'
+          placeholder='Search for ton name... @ex: nick'
           className={styles.donSearch}
           onChange={handleSearch}
           onKeyDown={handleKeyDown}

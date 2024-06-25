@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import styles from "./AdditionalDomainRow.module.css";
-import { timeSince } from '../../../../lib/state';
-import TonWeb from 'tonweb';
-import { countDecimals } from '../../../../lib/state';
+import { Link } from 'react-router-dom';
 
 //@ts-ignore
 function AdditionalDomainRow({ item, index }) {
@@ -14,10 +12,9 @@ function AdditionalDomainRow({ item, index }) {
 
   return (
     <tr className={styles.tr}>
-      {/* <td className={styles.td}>{index}</td> */}
       <td className={styles.td}>{domainName}</td>
       
-      <td className={styles.td}><span className={styles.live}>View</span></td>
+      <td className={styles.td}><Link className={styles.view} to={`/${domainName}`}>View</Link></td>
     </tr>
   )
 }

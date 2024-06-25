@@ -39,7 +39,7 @@ export default function SearchDomainHeader(data:SearchDomainHeaderProps) {
     return (
         <div className={styles.searchDomainWrapper}>
             <div className={styles.left}>
-                <h3>{domainName}</h3>
+                <h3>{domainName}.ton</h3>
                 <span>TAKEN</span>
             </div>
             <div className={styles.right}>

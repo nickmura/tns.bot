@@ -20,8 +20,6 @@
     width: fit-content;
     border-radius: 12px;
     border: 1px solid rgba(132, 132, 132, 0.283);
-    overflow-y: auto;
-    max-height: calc(100dvh - 100px);
     width: 100%;
   }
 

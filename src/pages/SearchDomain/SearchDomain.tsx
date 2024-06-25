@@ -13,31 +13,32 @@ import AdditionalDomainRow from "./components/AdditionalDomainRow/AdditionalDoma
 import BidStatusRow from "./components/BidStatusRow/BidStatusRow";
 import SearchDomainHeader from "./components/SearchDomainHeader/SearchDomainHeader";
 import styles from "./SearchDomain.module.css";
+import { AppDispatch } from "../../store";
 
-
+//@ts-ignore
 export default function SearchDomain() {
 	const { id } = useParams<{ id: string }>();
-	const dispatch = useDispatch();
+	const dispatch = useDispatch<AppDispatch>();
 	const tempDomainInfo = useSelector((state: RootState) => state.searchDomain.domainInfo)
 	const tempDomainBids = useSelector((state: RootState) => state.searchDomain.domainBids)
 	const tempAdditionalDomains = useSelector((state: RootState) => state.searchDomain.additionalDomains)
-
 	const [domainInfo, setDomainInfo] = useState<any[]>([]);
 	const [domainBids, setDomainBids] = useState<any[]>(tempDomainBids);
 	const [additionalDomains, setAdditionalDomains] = useState<any[]>(tempAdditionalDomains);
-
-	const state = useSelector((state: RootState) => state.searchDomain)
+	const searchId = id?.split(".ton")[0] //@ts-ignore
 
 	useEffect(() => {
-		dispatch(fetchDomainInfo(id))
-	}, [id])
+		if(searchId) {  //@ts-ignore
+			dispatch(fetchDomainInfo(searchId))
+		}
+	}, [searchId])
 
 	useEffect(() => {
 		const datas = [tempDomainInfo]
 		setDomainInfo(datas)
 		setDomainBids(tempDomainBids)
 		setAdditionalDomains(tempAdditionalDomains)
-		console.log(domainInfo, )
+		console.log(domainInfo,)
 	}, [tempDomainInfo, tempDomainBids, tempAdditionalDomains])
 
 
@@ -46,8 +47,8 @@ export default function SearchDomain() {
 			{
 				domainInfo?.map((data) => {
 					return (
-						<SearchDomainHeader 
-							 data={data}
+						<SearchDomainHeader
+							data={data}
 						/>
 					)
 				})
@@ -65,7 +66,7 @@ export default function SearchDomain() {
 						</thead>
 						<tbody className={styles.tbody}>
 							{
-								(domainBids as { data?: any[] })?.data?.map((e:object, i:number) => {
+								(domainBids as { data?: any[] })?.data?.map((e: object, i: number) => {
 									return (
 										<BidStatusRow
 											item={e}
@@ -91,16 +92,16 @@ export default function SearchDomain() {
 						</thead>
 						<tbody className={styles.tbody}>
 							{
-								(additionalDomains as {items? : any[]})?.items?.map((e:object, i:number) => {
-								    return (
-								        <AdditionalDomainRow
-								            item={e}
-								            index={i}
-								            key={i}
-								        />
-								    );
+								(additionalDomains as { items?: any[] })?.items?.map((e: object, i: number) => {
+									return (
+										<AdditionalDomainRow
+											item={e}
+											index={i}
+											key={i}
+										/>
+									);
 								})
-              }
+							}
 						</tbody>
 					</table>
 				</div>

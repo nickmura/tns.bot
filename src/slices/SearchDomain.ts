@@ -25,9 +25,10 @@ export const fetchDomainInfo = createAsyncThunk("domains/fetchLatestAuctions", a
             }
         });
         const client = new Api(httpClient);
-        if (args !== undefined) {
-            const domainInfo = await client.dns.getDnsInfo(args);
-            const domainBids = await client.dns.getDomainBids(args)
+        const donName = args
+        if (donName !== undefined) {
+            const domainInfo = await client.dns.getDnsInfo(donName);
+            const domainBids = await client.dns.getDomainBids(donName)
             dispatch(setDomainInfo(domainInfo))
             dispatch(setDomainBids(domainBids));
             const address = domainInfo?.item?.owner?.address
