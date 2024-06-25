@@ -2,12 +2,14 @@ import { configureStore } from '@reduxjs/toolkit';
 import auctionReducer from './slices/AuctionSlice';
 import domainReducer from './slices/MyDomainsSlice';
 import filterReducer from './slices/FilterSlice';
+import SearchDomain from './slices/SearchDomain';
 
 const store = configureStore({
   reducer: {
     auctions: auctionReducer,
     domains: domainReducer,
     filters: filterReducer,
+    searchDomain: SearchDomain
   },
 })
 

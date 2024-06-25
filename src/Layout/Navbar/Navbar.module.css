@@ -1,7 +1,51 @@
 .container {
     display: flex;
+    justify-content: space-between;
     align-items: center;
     width: 100%;
     column-gap: 1rem;
     margin-bottom: 10px;
+}
+
+.container .lineGroup a {
+    margin: 0 10px;
+}
+
+.searchContainer {
+    margin: 0 40px;
+    display: flex;
+}
+
+.searchContainer .searchIcon {
+    padding: 13px 0 0 15px;
+    position: absolute;
+    min-width: 30px;
+    font-size: 31px !important;
+}
+
+.searchContainer .donSearch {
+    padding: 10px 40px;
+    border: 1px solid cornflowerblue;
+    border-radius: 19px;
+    width: 350px;
+}
+
+.searchContainer .donSearch:focus {
+    outline: none;
+}
+
+@media only screen and (max-width:1024px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .donSearch {
+        margin: 17px 0;
+    }
+
+    .searchContainer .searchIcon {
+        padding: 27px 0 0 7px;
+        min-width: 34px;
+        font-size: 47px !important;
+    }
 }

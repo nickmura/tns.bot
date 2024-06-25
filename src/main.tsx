@@ -12,8 +12,29 @@ import { createRoot } from "react-dom/client";
 import Auctions from './pages/Auctions/Auctions';
 import ErrorPage from './pages/ErrorPage/ErrorPage';
 import MyDomains from './pages/mydomains/MyDomains';
-
+import SearchDomain from './pages/SearchDomain/SearchDomain.tsx';
+// import React from 'react';
+// import ReactDOM from 'react-dom';
+// import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 WebApp.ready();
+
+// // @ts-ignore
+// createRoot(document.getElementById("root")).render(
+//   <Provider store={store}>
+//      <TonConnectUIProvider manifestUrl="https://f004.backblazeb2.com/file/trxmini-games-/tonconnect-mainfest.json">
+//       <React.StrictMode>
+//         <Router>
+//           <Routes>
+//             <Route path='/' Component={Root} />
+//             <Route path=':/id' Component={SearchDomain} />
+//             <Route path='/auctions' Component={Auctions} />
+//             <Route path='/mydomains' Component={MyDomains} />
+//           </Routes>
+//         </Router>
+//       </React.StrictMode>,
+//     </TonConnectUIProvider>
+//   </Provider>
+// )
 
 const router = createBrowserRouter([
   {
@@ -33,7 +54,13 @@ const router = createBrowserRouter([
           <MyDomains />
         ),
       },
-    ]
+      {
+        path: "/:id",
+        element: (
+          <SearchDomain/>
+        )
+      }
+    ],
   },
 ]);
 //@ts-ignore

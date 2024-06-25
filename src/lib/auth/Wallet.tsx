@@ -13,8 +13,6 @@ export default function TONWallet() {
    
     const Wallet = useTonWallet()
     let Account = Wallet?.account
-    console.log(Account?.address)
-
 
     // Configure the HTTP client with your host and token
     const httpClient = new HttpClient({

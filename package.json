@@ -17,7 +17,7 @@
     "@ton/core": "^0.56.3",
     "@ton/crypto": "^3.2.0",
     "@ton/ton": "^13.11.1",
-    "@tonconnect/sdk": "^3.0.0",
+    "@tonconnect/sdk": "^3.0.3",
     "@tonconnect/ui": "^2.0.0",
     "@tonconnect/ui-react": "^2.0.0",
     "@twa-dev/sdk": "^6.7.1",
@@ -28,7 +28,6 @@
     "react-icons": "^5.2.1",
     "react-redux": "^9.1.1",
     "react-router": "^6.23.0",
-    "react-router-dom": "^6.23.0",
     "tonapi-sdk-js": "^1.0.8",
     "tonweb": "0.0.59"
   },
@@ -38,10 +37,14 @@
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
     "@vitejs/plugin-react": "^4.0.3",
+    "concurrently": "^8.2.2",
     "eslint": "^8.45.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
+    "node-telegram-bot-api": "^0.66.0",
+    "react-router-dom": "^6.23.1",
     "tailwindcss": "^3.4.3",
+    "telegraf": "^4.16.3",
     "typescript": "^5.0.2",
     "vite": "^4.4.5"
   }

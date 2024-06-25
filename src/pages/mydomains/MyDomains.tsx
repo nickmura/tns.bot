@@ -14,21 +14,12 @@ function MyDomains() {
   const dispatch = useDispatch();
   const Wallet = useTonWallet(); //@ts-ignore
   const domains = useSelector(state => state.domains.domains);
-  console.log("DOMAIN SELECT", domains)
 
   useEffect(() => {
     if (Wallet) {
       dispatch(fetchUserDomains(Wallet))
-    }
-    //@ts-ignore
-
-
-        if (Wallet) {        //@ts-ignore
-          dispatch(fetchUserDomains(Wallet))
-        }
-
-        
-      }, [Wallet])
+    }        
+  }, [Wallet])
 
   return (
     <div className={styles.container}>
@@ -44,8 +35,8 @@ function MyDomains() {
                 }
             </tbody>
         </table>
-{/* 
-      <tr className={styles.tr}>
+
+      {/* <tr className={styles.tr}>
         <td className={styles.td}>{index}</td>
         <td className={styles.td}>{Domain.domain}</td>
         <td className={styles.td}>{Number(TonWeb.utils.fromNano(String(Domain.price)))}</td>

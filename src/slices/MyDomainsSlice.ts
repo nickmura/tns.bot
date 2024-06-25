@@ -16,7 +16,6 @@ export const fetchUserDomains = createAsyncThunk("domains/fetchUserDomains", asy
             //@ts-ignore
         let Account = Wallet?.account;
 
-
       const httpClient = new HttpClient({
         baseUrl: 'https://tonapi.io/',
         baseApiParams: {
@@ -28,7 +27,6 @@ export const fetchUserDomains = createAsyncThunk("domains/fetchUserDomains", asy
       });
 
       const client = new Api(httpClient);
-      console.log("ADDRESS CHECK", Account)
       try {
         const user_domains = await client.accounts.getAccountDnsExpiring(Account?.address); //@ts-ignore
         console.log("domain check", user_domains.items, user_domains)

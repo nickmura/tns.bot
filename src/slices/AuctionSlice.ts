@@ -12,11 +12,10 @@ const initialState = {
   wallet: null
 } 
 
-export const fetchLatestAuctions = createAsyncThunk("auction/fetchLatestAuctions", async (args, { dispatch, getState }) => {
+export const fetchLatestAuctions = createAsyncThunk("auction/fetchLatestAuctions", async (args, { dispatch }) => {
   try {
     const Wallet = args //@ts-ignore
     let Account = Wallet?.account;
-
     const httpClient = new HttpClient({
       baseUrl: 'https://tonapi.io/',
       baseApiParams: {
