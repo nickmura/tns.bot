@@ -12,7 +12,6 @@ import SearchDomainHeader from "./components/SearchDomainHeader/SearchDomainHead
 import styles from "./SearchDomain.module.css";
 import { AppDispatch } from "../../store";
 
-//@ts-ignore
 export default function SearchDomain() {
 	const { id } = useParams<{ id: string }>();
 	const dispatch = useDispatch<AppDispatch>();
@@ -23,9 +22,9 @@ export default function SearchDomain() {
 	const [domainBids, setDomainBids] = useState<any[]>(tempDomainBids);
 	const [additionalDomains, setAdditionalDomains] = useState<any[]>(tempAdditionalDomains);
 	const searchId = id?.split(".ton")[0] //@ts-ignore
-
+	// console.log(state)
 	useEffect(() => {
-		if(searchId) {  //@ts-ignore
+		if (searchId) {  //@ts-ignore
 			dispatch(fetchDomainInfo(searchId))
 		}
 	}, [searchId])
@@ -35,12 +34,11 @@ export default function SearchDomain() {
 		setDomainInfo(datas)
 		setDomainBids(tempDomainBids)
 		setAdditionalDomains(tempAdditionalDomains)
-		console.log(domainInfo,)
 	}, [tempDomainInfo, tempDomainBids, tempAdditionalDomains])
 
 
 	return (
-		<>
+		<div className={styles.wrapper}>
 			{
 				domainInfo?.map((data) => {
 					return (
@@ -58,14 +56,14 @@ export default function SearchDomain() {
 							<tr>
 								<th className={styles.th}>Bidder</th>
 								<th className={styles.th}>Amount</th>
-								<th className={styles.th}>Date</th>
+								<th className={sth>
 							</tr>
 						</thead>
-						<tbody className={styles.tbody}>
+						<tbody className={sty
 							{
-								(domainBids as { data?: any[] })?.data?.map((e: object, i: number) => {
+								(domainBids as { .data?.map((e: object, i: number) => {
 									return (
-										<BidStatusRow
+										<BidStatusRo
 											item={e}
 											index={i}
 											key={i}
@@ -89,12 +87,12 @@ export default function SearchDomain() {
 						</thead>
 						<tbody className={styles.tbody}>
 							{
-								(additionalDomains as { items?: any[] })?.items?.map((e: object, i: number) => {
+								(additionalDomains as { items?: any[] })?.items?.map((e: object, j: number) => {
 									return (
 										<AdditionalDomainRow
 											item={e}
-											index={i}
-											key={i}
+											index={j}
+											key={j}
 										/>
 									);
 								})
@@ -103,6 +101,6 @@ export default function SearchDomain() {
 					</table>
 				</div>
 			</div>
-		</>
+		</div>
 	);
 }

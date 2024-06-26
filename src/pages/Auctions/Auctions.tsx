@@ -12,41 +12,41 @@ import type { RootState } from "../../store";
 import styles from "./Auctions.module.css";
 
 export default function Auctions() {
-    const dispatch = useDispatch();
-    const Wallet = useTonWallet();
-    const auctions = useSelector((state: RootState) => state.auctions.auctions);
-    const filters = useSelector((state: RootState) => state.filters);
+    const dispatch
+    const Wallet =
+    const auctionsotState) => state.auctions.auctions);
+    const filters tState) => state.filters);
 
-    const [filtered, setFiltered] = useState<any[]>(auctions);
+    const [filteree<any[]>(auctions);
 
-    useEffect(() => {
-        //@ts-ignore
-        dispatch(fetchLatestAuctions(Wallet));
+    useEffect(() =
+        //@ts-igno
+        dispatch(f));
     }, [Wallet]);
 
     // Filter
-    useEffect(() => {
-        let newAuctions: any[] = [...auctions];
+    useEffect(() =
+        let newAucns];
 
-        // Search filter
-        const filterText: string = filters.filter;
-        if (filterText) {
-            newAuctions = auctions.filter((a: any) => a.domain.includes(filterText))
+        // Search 
+        const filtfilter;
+        if (filter
+            newAuca: any) => a.domain.includes(filterText))
         }
 
-        // Sorting
-        if (filters?.sortType) {
-            const multiplier = filters.sortOrder === "ascending" ? 1 : -1;
+        // Sortin
+        if (filter
+            const Order === "ascending" ? 1 : -1;
 
-            switch (filters.sortType) {
+            switch (filters.sortType)
                 case "bids":
-                    newAuctions.sort((a, b) => (a.bids - b.bids) * multiplier)
+                    newAuctions.sort(ds - b.bids) * multiplier)
                     break;
                 case "price":
-                    newAuctions.sort((a, b) => (a.price - b.price) * multiplier)
+                    newAuctions.sort(ice - b.price) * multiplier)
                     break;
                 case "date":
-                    newAuctions.sort((a, b) => (a.date - b.date) * multiplier)
+                    newAuctions.sort(te - b.date) * multiplier)
                     break;
             }
         }
@@ -57,25 +57,25 @@ export default function Auctions() {
     return (
         <>
         <Filters />
-        <div className={styles.tableWrapper}>
-            <table className={styles.table}>
-                <thead className={styles.thead}>
+        <div className={styles.tableW
+            <table className={styles.
+                <thead className={sty
                     <tr>
-                        <th className={styles.th}>Domain name</th>
-                        <th className={styles.th}>Price</th>
-                        <th className={styles.th}>Total bids</th>
-                        <th className={styles.th}>Date</th>
-                        <th className={styles.th}>Status</th>
+                        <th classNamemain name</th>
+                        <th classNameice</th>
+                        <th classNametal bids</th>
+                        <th classNamete</th>
+                        <th classNameatus</th>
                     </tr>
                 </thead>
-                <tbody className={styles.tbody}>
+                <tbody className={sty
                     {
-                        filtered?.map((e, i) => {
+                        filtered?.map
                             return (
-                                <AuctionRow
-                                    auction={e}
-                                    index={i}
-                                    key={i}
+                                <Auct
+                                    a
+                                    i
+                                    k
                                 />
                             );
                         })

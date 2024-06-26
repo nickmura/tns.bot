@@ -10,10 +10,10 @@ function AdditionalDomainRow({ item, index }) {
   }, [item])
   
   return (
-    <tr className={styles.tr}>
+    <tr className={styles.tr} key={item.dns_item.address}>
       <td className={styles.td}>{domainName}</td>
       
-      <td className={styles.td}><Link className={styles.view} to={`/${domainName}`}>View</Link></td>
+      <td className={styles.td}><Link className={styles.view} to={`/${domainName}`}>View </Link></td>
     </tr>
   )
 }

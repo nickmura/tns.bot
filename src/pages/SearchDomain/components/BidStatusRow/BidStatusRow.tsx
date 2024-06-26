@@ -49,7 +49,7 @@ function SearchDomainRow({ item, index }) {
   const isLive = timeDifferenceInSeconds > 3600 ? "not live" : "live"
 
   return (
-    <tr className={styles.tr}>
+    <tr className={styles.tr} key={item.txHash}>
       {
         isMobile?(
           <td className={styles.td}>{bidder ? shortenAddress(bidder) : ''}</td>

@@ -5,6 +5,7 @@ import { BsStopwatch } from "react-icons/bs";
 import { FaTelegram } from "react-icons/fa";
 import { toUserFriendlyAddress } from "@tonconnect/sdk";
 import { timeAfter } from "../../../../lib/state";
+import { Link } from "react-router-dom";
 
 interface SearchDomainHeaderProps {
     data: {
@@ -18,15 +19,15 @@ interface SearchDomainHeaderProps {
     };
 }
 
-export default function SearchDomainHeader(data: SearchDomainHeaderProps) {
+export default function SearchDomainHeader(headerInfo: SearchDomainHeaderProps) {
     const [domainName, setDomainName] = useState('')
     const [expiring, setExpiring] = useState(0)
     const [owner, setOwner] = useState(null || '')
     useEffect(() => {
-        setDomainName(data?.data?.name)
-        setExpiring(data?.data?.expiring_at)
-        setOwner(data?.data?.item?.owner?.address)
-    }, [data])
+        setDomainName(headerInfo?.data?.name)
+        setExpiring(headerInfo?.data?.expiring_at)
+        setOwner(headerInfo?.data?.item?.owner?.address)
+    }, [headerInfo])
 
     const shortenAddress = (add: string) => {
         const longAddress = toUserFriendlyAddress(add);
@@ -50,7 +51,9 @@ export default function SearchDomainHeader(data: SearchDomainHeaderProps) {
                     Expires in {timeAfter(new Date(expiring * 1000))}
                     <BsStopwatch />
                 </span>
-                <FaTelegram className={styles.tgIcon} />
+                <Link to={"https://t.me/ton_test9999_bot"}>
+                    <FaTelegram className={styles.tgIcon} />
+                </Link>
                 <span>
                     Owned by {owner ? shortenAddress(owner) : ''}
                     <FiLink />

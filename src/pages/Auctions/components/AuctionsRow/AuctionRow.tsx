@@ -10,9 +10,7 @@ function AuctionRow({ auction, index }) {
   if (!auction.price || !auction.date || !auction.bids || !auction.owner || !auction.domain) {
     return
   }
-
   const isAuction = countDecimals(Number(TonWeb.utils.fromNano(String(auction.price)))) > 1 ? true: false
-
   if (!isAuction) {
     return
   }

@@ -28,6 +28,7 @@
     border: 1px solid cornflowerblue;
     border-radius: 19px;
     width: 350px;
+    background: inherit;
 }
 
 .searchContainer .donSearch:focus {

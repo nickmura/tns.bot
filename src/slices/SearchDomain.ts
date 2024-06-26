@@ -1,11 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import type { PayloadAction } from '@reduxjs/toolkit'
-import TonWeb from "tonweb";
-
-import { useTonWallet } from "@tonconnect/ui-react";
-import { HttpClient, Api } from 'tonapi-sdk-js';
-
-const tonweb = new TonWeb(new TonWeb.HttpProvider('https://toncenter.com/api/v2/jsonRPC', { apiKey: import.meta.env.VITE_TONCENTER_API_KEY }));
+import type { PayloadAction /toolkit'
+import { useTonWallet } from-react";
+import { HttpClient, Api } fjs';
 
 const initialState = {
     domainInfo: '',
@@ -13,7 +9,7 @@ const initialState = {
     additionalDomains: [],
 }
 
-export const fetchDomainInfo = createAsyncThunk("domains/fetchLatestAuctions", async (args, { dispatch }) => {
+export const fetchDomainInfounk("domains/fetchLatestAuctions", async (args, { dispatch }) => {
     try {
         const httpClient = new HttpClient({
             baseUrl: 'https://tonapi.io/',
@@ -26,15 +22,15 @@ export const fetchDomainInfo = createAsyncThunk("domains/fetchLatestAuctions", a
         });
         const client = new Api(httpClient);
         const donName = args
-        if (donName !== undefined) {
-            const domainInfo = await client.dns.getDnsInfo(donName);
-            const domainBids = await client.dns.getDomainBids(donName)
-            dispatch(setDomainInfo(domainInfo))
-            dispatch(setDomainBids(domainBids));
-            const address = domainInfo?.item?.owner?.address
-            if (address !== undefined) {
-                const getAdditionalDomains = await client.accounts.getAccountDnsExpiring(address)
-                dispatch(setAdditionalDomains(getAdditionalDomains))
+        if (donName !== undefin
+            const domainInfo = .dns.getDnsInfo(donName);
+            const domainBids = .dns.getDomainBids(donName)
+            dispatch(setDomainIfo))
+            dispatch(setDomainBds));
+            const address = domm?.owner?.address
+            if (address !== und
+                const getAdditi= await client.accounts.getAccountDnsExpiring(address)
+                dispatch(setAddns(getAdditionalDomains))
             }
         }
     } catch (error) {
@@ -47,11 +43,11 @@ const searchDomainSlice = createSlice({
     name: 'domainSearch',
     initialState,
     reducers: {
-        setDomainInfo(state, { payload }) {
-            state.domainInfo = payload
+        setDomainInfo(state, { {
+            state.domainInfo =
         },
-        setDomainBids(state, { payload }) {
-            state.domainBids = payload
+        setDomainBids(state, { {
+            state.domainBids =
         },
         setAdditionalDomains(state, { payload }) {
             state.additionalDomains = payload
