@@ -3,49 +3,51 @@ import { useNavigate } from 'react-router-dom';
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { TonConnectUIProvider, TonConnectButton } from '@tonconnect/ui-react'
-import { /go";
-import { m'
-import stss";
-import Wallet";
+import { GoSearch } from "react-icons/go";
+import { Link } from 'react-router-dom'
+import styles from "./Navbar.module.css";
+import Wallet from "../../lib/auth/Wallet";
 
-export de
-  const n
-  const [ useState('')
+export default function Navbar() {
+  const navigateTo = useNavigate()
+  const [searchName, setSearchName] = useState('')
 
-  const heEvent<HTMLInputElement>) => {
-    if((e ".ton") {
-      setslice(0, -4))
-    } els
-      set
+  const handleSearch = (e:React.ChangeEvent<HTMLInputElement>) => {
+    if((e.target.value).slice(-4) === ".ton") {
+      setSearchName((e.target.value).slice(0, -4))
+    } else {
+      setSearchName(e.target.value)
     }
   }
 
-  const hboardEvent<HTMLInputElement>) => {
-    if (e
-      exe
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      executeSearch();
     }
   }
 
-  const e
-    navig
+  const executeSearch = () => {
+    navigateTo(`/search/${searchName}`)
   }
 
-  return 
-    <nav >
-      <dip}>
-        <s</Link>
-        <ains</Link>
-      </d
-      <dintainer}>
-        <earchIcon} />
-        <
-          name... @ex: nick'
-         }
-         
-         
-        /
-      </d
-      <Wa
-    </nav
+  return (
+    <nav className={styles.container}>
+      <div className={styles.lineGroup}>
+        <Link to={"auctions"}>Auctions</Link>
+        <Link to={"mydomains"}>My Domains</Link>
+        <Link to={"search"}>Search</Link>
+      </div>
+      <div className={styles.searchContainer}>
+        <GoSearch className={styles.searchIcon} />
+        <input type="text"
+          placeholder='Search for ton name... @ex: nick'
+          spellCheck="false"
+          className={styles.donSearch}
+          onChange={handleSearch}
+          onKeyDown={handleKeyDown}
+        />
+      </div>
+      <Wallet />
+    </nav>
   )
 }

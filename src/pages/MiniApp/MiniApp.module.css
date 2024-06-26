@@ -1,5 +1,30 @@
-.infoText {
-  display: block;
+.miniappContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.expire {
+  font-size: 19px;
+  margin-bottom: 13px;
+}
+
+.time {
+  color: turquoise;
+  font-size: 25px;
+}
+
+.owner {
+  font-size: 23px;
+  margin-bottom: 13px;
+}
+
+.address {
+  color: rgb(203, 219, 58);
+  font-weight: 700;
+}
+
+.sale {
+  font-size: 27px;
 }
 
 .searchbar {
@@ -10,16 +35,18 @@
   outline: none;
   font-size: 16px;
   outline: none;
+  transition: 0.3s ease-in-out all;
+  margin-bottom: 13px;
 }
 
-.searchbar:hover
-
 .searchbar:focus {
-  outline: 2px solid rgb(129, 179, 212)
+  /* outline: 2px solid rgb(129, 179, 212); */
+  border: 1px solid rgb(103, 215, 235);
 }
 
 .errorText {
   font-size: 23px;
   font-weight: 700;
   display: block;
+  color: red;
 }

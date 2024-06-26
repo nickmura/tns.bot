@@ -29,9 +29,12 @@
     border-radius: 19px;
     width: 350px;
     background: inherit;
+    transition: 0.3s all ease-in-out;
 }
 
 .searchContainer .donSearch:focus {
+    border: 1px solid cornsilk;
+    box-shadow: rgba(167, 206, 61, 0.15) 0px 15px 25px, rgba(91, 223, 98, 0.05) 0px 5px 10px;
     outline: none;
 }
 

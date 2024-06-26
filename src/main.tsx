@@ -21,33 +21,35 @@ const router = createBrowserRouter([
     path: "/",
     element: <Root />,
     errorElement: <ErrorPage />,
-    
     children: [
       {
-        path: "auctions",
+        path: "/auctions",
         element: <Auctions />,
       },
       {
-        path: "mydomains",
+        path: "/mydomains",
         element: <MyDomains />,
       },
       {
-        path:"miniapp",
-        element: <MiniApp/>
+        path: "/search",
+        element: <SearchDomain />,
       },
       {
         path: "/search/:id",
         element: <SearchDomain />,
       },
     ],
-  }
+  },
+  {
+    path:"/miniapp",
+    element: <MiniApp/>
+  },
 ]);
 //@ts-ignore
 createRoot(document.getElementById("root")).render(
   <Provider store={store}>
     <TonConnectUIProvider manifestUrl="https://f004.backblazeb2.com/file/trxmini-games-/tonconnect-mainfest.json">
       <RouterProvider router={router} />
-
     </TonConnectUIProvider>
   </Provider>
 );

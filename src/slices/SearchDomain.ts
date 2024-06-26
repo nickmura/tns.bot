@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import type { PayloadAction /toolkit'
-import { useTonWallet } from-react";
-import { HttpClient, Api } fjs';
+import type { PayloadAction } from '@reduxjs/toolkit'
+import { useTonWallet } from "@tonconnect/ui-react";
+import { HttpClient, Api } from 'tonapi-sdk-js';
 
 const initialState = {
     domainInfo: '',
@@ -9,7 +9,7 @@ const initialState = {
     additionalDomains: [],
 }
 
-export const fetchDomainInfounk("domains/fetchLatestAuctions", async (args, { dispatch }) => {
+export const fetchDomainInfo = createAsyncThunk("domains/fetchLatestAuctions", async (args, { dispatch }) => {
     try {
         const httpClient = new HttpClient({
             baseUrl: 'https://tonapi.io/',
@@ -22,15 +22,15 @@ export const fetchDomainInfounk("domains/fetchLatestAuctions", async (args, { di
         });
         const client = new Api(httpClient);
         const donName = args
-        if (donName !== undefin
-            const domainInfo = .dns.getDnsInfo(donName);
-            const domainBids = .dns.getDomainBids(donName)
-            dispatch(setDomainIfo))
-            dispatch(setDomainBds));
-            const address = domm?.owner?.address
-            if (address !== und
-                const getAdditi= await client.accounts.getAccountDnsExpiring(address)
-                dispatch(setAddns(getAdditionalDomains))
+        if (donName !== undefined) {
+            const domainInfo = await client.dns.getDnsInfo(donName);
+            const domainBids = await client.dns.getDomainBids(donName)
+            dispatch(setDomainInfo(domainInfo))
+            dispatch(setDomainBids(domainBids));
+            const address = domainInfo?.item?.owner?.address
+            if (address !== undefined) {
+                const getAdditionalDomains = await client.accounts.getAccountDnsExpiring(address)
+                dispatch(setAdditionalDomains(getAdditionalDomains))
             }
         }
     } catch (error) {
@@ -43,11 +43,11 @@ const searchDomainSlice = createSlice({
     name: 'domainSearch',
     initialState,
     reducers: {
-        setDomainInfo(state, { {
-            state.domainInfo =
+        setDomainInfo(state, { payload }) {
+            state.domainInfo = payload
         },
-        setDomainBids(state, { {
-            state.domainBids =
+        setDomainBids(state, { payload }) {
+            state.domainBids = payload
         },
         setAdditionalDomains(state, { payload }) {
             state.additionalDomains = payload

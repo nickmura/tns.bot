@@ -84,14 +84,18 @@ export default function MiniApp() {
 
       {
         isOwner && (
-          <div id='don-info-div'>
-            <span className={styles.infoText}>
-              The owner of {domainName.toUpperCase()} is : {domainOwner?toUserFriendlyAddress(domainOwner):''}
+          <div id='don-info-div' className={styles.miniappContainer}>
+            <span className={styles.owner}>
+              The owner of {domainName.toUpperCase()} is : {domainOwner?(
+                <span className={styles.address}>{toUserFriendlyAddress(domainOwner)}</span>
+                
+                ):''}
             </span>
-            <span className={styles.infoText}>
-              It's expiring at {expiringAt}
+            <span className={styles.expire}>
+              It's expiring at : 
+              <span className={styles.time}>{expiringAt}</span>
             </span>
-            <span className={styles.infoText}>
+            <span className={styles.sale}>
               {
                 isForSale ? `It's on ${marketName} marketplace now for sale.` : `It's not for sale now.`
               }

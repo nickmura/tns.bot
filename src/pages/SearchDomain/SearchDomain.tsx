@@ -18,6 +18,7 @@ export default function SearchDomain() {
 	const tempDomainInfo = useSelector((state: RootState) => state.searchDomain.domainInfo)
 	const tempDomainBids = useSelector((state: RootState) => state.searchDomain.domainBids)
 	const tempAdditionalDomains = useSelector((state: RootState) => state.searchDomain.additionalDomains)
+	const state = useSelector((state: RootState) => state.searchDomain)
 	const [domainInfo, setDomainInfo] = useState<any[]>([]);
 	const [domainBids, setDomainBids] = useState<any[]>(tempDomainBids);
 	const [additionalDomains, setAdditionalDomains] = useState<any[]>(tempAdditionalDomains);
@@ -38,7 +39,7 @@ export default function SearchDomain() {
 
 
 	return (
-		<div className={styles.wrapper}>
+		<>
 			{
 				domainInfo?.map((data) => {
 					return (
@@ -56,14 +57,14 @@ export default function SearchDomain() {
 							<tr>
 								<th className={styles.th}>Bidder</th>
 								<th className={styles.th}>Amount</th>
-								<th className={sth>
+								<th className={styles.th}>Date</th>
 							</tr>
 						</thead>
-						<tbody className={sty
+						<tbody className={styles.tbody}>
 							{
-								(domainBids as { .data?.map((e: object, i: number) => {
+								(domainBids as { data?: any[] })?.data?.map((e: object, i: number) => {
 									return (
-										<BidStatusRo
+										<BidStatusRow
 											item={e}
 											index={i}
 											key={i}
@@ -101,6 +102,6 @@ export default function SearchDomain() {
 					</table>
 				</div>
 			</div>
-		</div>
+		</>
 	);
 }

@@ -30,10 +30,12 @@
     color: rgb(209, 206, 206);
     transition: ease-in-out 0.3s;
     font-weight: 500;
+    margin-bottom: 13px;
 }
 
 .searchDomainWrapper span:hover {
     color: rgb(151, 180, 233);
+    box-shadow: rgba(167, 206, 61, 0.15) 0px 15px 25px, rgba(91, 223, 98, 0.05) 0px 5px 10px;
 }
 
 .searchDomainWrapper span svg {

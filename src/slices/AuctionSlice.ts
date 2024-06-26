@@ -1,40 +1,40 @@
-import { createSlice, createAsyncThunk } from '@reduxjs
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import TonWeb from "tonweb";
 
 import { useTonWallet } from "@tonconnect/ui-react";
-import { HttpClienom 'tonapi-sdk-js';
+import { HttpClient, Api } from 'tonapi-sdk-js';
 
-const tonweb = new TonWeb.HttpProvider('https://toncent { apiKey: import.meta.env.VITE_TONCENTER_API_KEY }));
+const tonweb = new TonWeb(new TonWeb.HttpProvider('https://toncenter.com/api/v2/jsonRPC', { apiKey: import.meta.env.VITE_TONCENTER_API_KEY }));
 
-const initialState
+const initialState = { 
   auctions: [],
   wallet: null
 } 
 
-export const fetchons = createAsyncThunk("auction/fetch(args, { dispatch }) => {
+export const fetchLatestAuctions = createAsyncThunk("auction/fetchLatestAuctions", async (args, { dispatch }) => {
   try {
-    const Wallet =-ignore
-    let Account = ount;
-    const httpClietpClient({
-      baseUrl: 'hti.io/',
-      baseApiParam
-        headers: 
-          Authorizrer ${import.meta.env.VITE_TONAPI_KEY}`,
-          'Contentplication/json'
+    const Wallet = args //@ts-ignore
+    let Account = Wallet?.account;
+    const httpClient = new HttpClient({
+      baseUrl: 'https://tonapi.io/',
+      baseApiParams: {
+        headers: {
+          Authorization: `Bearer ${import.meta.env.VITE_TONAPI_KEY}`,
+          'Content-type': 'application/json'
         }
       }
     });
-    const client =tpClient);
+    const client = new Api(httpClient);
 
-    // const wallewallet.create({ address: AccouublicKey: Account?.publicKey, wc: 0 })
-    // dispatch(selet))
-    const current_await client.dns.getAllAuction });
-    console.log("Aurrent_auctions)
-    dispatch(setAuctions(current_auctions.data)
+    // const wallet = tonweb.wallet.create({ address: Account?.address, publicKey: Account?.publicKey, wc: 0 })
+    // dispatch(setWallet(wallet))
+    const current_auctions = await client.dns.getAllAuctions({ tld: 'ton' });
+    console.log("AUCTIONS", current_auctions)
+    dispatch(setAuctions(current_auctions.data))
   } catch (error) {
-    console.error("Error fetching auctions:", er
-    // Handle errors as appropriate for your appxt
+    console.error("Error fetching auctions:", error);
+    // Handle errors as appropriate for your application context
   }
 }
 );
