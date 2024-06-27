@@ -13,11 +13,7 @@ export default function Navbar() {
   const [searchName, setSearchName] = useState('')
 
   const handleSearch = (e:React.ChangeEvent<HTMLInputElement>) => {
-    if((e.target.value).slice(-4) === ".ton") {
-      setSearchName((e.target.value).slice(0, -4))
-    } else {
-      setSearchName(e.target.value)
-    }
+    setSearchName(e.target.value)
   }
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -33,7 +29,7 @@ export default function Navbar() {
   return (
     <nav className={styles.container}>
       <div className={styles.lineGroup}>
-        <Link to={"auctions"}>Auctions</Link>
+        <Link to={"/"}>Auctions</Link>
         <Link to={"mydomains"}>My Domains</Link>
         <Link to={"search"}>Search</Link>
       </div>

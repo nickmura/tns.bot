@@ -1,7 +1,8 @@
 import React, { MediaHTMLAttributes, useEffect, useState } from 'react'
+import TonWeb from 'tonweb';
 import { toUserFriendlyAddress } from '@tonconnect/sdk';
 import styles from "./BidStatusRow.module.css";
-import { timeSince } from '../../../../lib/state';
+import { timeAfter } from '../../../../lib/state';
 
 //@ts-ignore
 function SearchDomainRow({ item, index }) {
@@ -9,8 +10,10 @@ function SearchDomainRow({ item, index }) {
   const [amount, setAmount] = useState(0)
   const [date, setDate] = useState(0)
   const [isMobile, setIsMobile] = useState(false)
+  const [forSale, setForSale] = useState(false)
 
   useEffect(() => {
+    console.log(item)
     setbidder(item?.bidder?.address)
     setAmount(item?.value)
     setDate(item?.txTime)
@@ -59,11 +62,11 @@ function SearchDomainRow({ item, index }) {
       }
       <td className={styles.td}>
         <div className={styles.price}>
-          {amount}
+        {Number(TonWeb.utils.fromNano(String(amount))).toFixed(3)} TON
         </div>
       </td>
       <td className={styles.td} style={{ textAlign: "center" }}>
-        <p>{timeSince(new Date(date * 1000))}</p>
+        <p>{timeAfter(new Date(date * 1000))}</p>
       </td>
       <td className={styles.td}><span className={isLive === "live" ? styles.live : undefined}>{isLive}</span></td>
     </tr>

@@ -1,11 +1,12 @@
 .searchDomainWrapper {
     display: flex;
     justify-content: space-between;
-    padding: 21px 0 35px 0;
+    margin: 50px 0 10px 0;
 }
 
 .searchDomainWrapper .left {
     display: flex;
+    justify-content: space-evenly;
 }
 
 .searchDomainWrapper .left span {
@@ -13,44 +14,104 @@
 }
 
 .searchDomainWrapper h3 {
-    font-size: 29px;
+    font-size: 35px;
     color: white;
     margin-right: 21px;
     font-weight: 600;
 }
 
-.searchDomainWrapper span {
+.taken {
     border-radius: 213px;
     font-size: 17px;
     border: 1px solid cornflowerblue;
     padding: 5px 15px 5px 15px;
     display: flex;
-    margin: 3px 11px;
+    margin: 13px 11px;
+    cursor: pointer;
+    color: rgb(209, 206, 206);
+    transition: ease-in-out 0.3s;
+    margin-bottom: 13px;
+}
+
+.forSale{
+    border-radius: 213px;
+    font-size: 17px;
+    border: 1px solid cornflowerblue;
+    padding: 5px 15px 5px 15px;
+    display: flex;
+    margin: 13px 11px;
+    cursor: pointer;
+    color: rgb(145, 226, 145) !important;
+    transition: ease-in-out 0.3s;
+    margin-bottom: 13px;
+    font-weight: 500;
+}
+
+.forSale:hover {
+    color: rgb(53, 51, 49) !important;
+    background-color: rgb(170, 240, 161) !important;
+}
+
+.searchDomainWrapper .infoBtn {
+    border-radius: 213px;
+    font-size: 13px;
+    border: 1px solid cornflowerblue;
+    padding: 5px 15px 5px 15px;
+    display: flex;
+    justify-content: center;
+    margin: 13px 11px;
     cursor: pointer;
     color: rgb(209, 206, 206);
     transition: ease-in-out 0.3s;
     font-weight: 500;
+    width: 280px;
     margin-bottom: 13px;
 }
 
-.searchDomainWrapper span:hover {
+.searchDomainWrapper .infoBtn:hover {
     color: rgb(151, 180, 233);
     box-shadow: rgba(167, 206, 61, 0.15) 0px 15px 25px, rgba(91, 223, 98, 0.05) 0px 5px 10px;
 }
 
-.searchDomainWrapper span svg {
+.searchDomainWrapper .infoBtn svg {
     color: cornflowerblue;
-    font-size: 23px;
-    padding-left: 5px;
+    font-size: 27px;
+    padding-left: 9px;
 }
 
 .searchDomainWrapper .right {
     display: flex;
 }
 
-.tgIcon {
-    font-size: 35px;
+.searchDomainWrapper .right span {
+    display: flex;
+    justify-content: center;
+}
+
+.tgBtn {
+    font-weight: 100;
+    margin-top: 11px;
+    transition: 0.3s ease-in-out all;
+}
+
+.tgBtn:hover {
+    margin-top: 5px;
+}
+
+
+.tgIcon{
+    font-size: 41px;
+    border: 1px solid cornflowerblue;
+    border-radius: 50%;
     color: cornflowerblue;
+    padding: 9px;
+    font-weight: 1;
+    transition: all 0.3s ease-in-out;
+}
+
+.tgIcon:hover {
+    background-color: cornflowerblue;
+    color: aliceblue;
 }
 
 @media only screen and (max-width: 1024px) {
@@ -59,16 +120,35 @@
     }
 
     .searchDomainWrapper .right {
-        flex-direction: column;
-        /* align-items: center; */
-    }
-
-    .searchDomainWrapper .tgIcon {
-        width: 100%;
+        justify-content: space-between;
     }
 
     .searchDomainWrapper span {
         font-size: 13px;
-        
+    }
+    .tgBtn {
+        margin-top: 15px;
+    }
+}
+
+@media only screen and (max-width: 768px){
+    .searchDomainWrapper .right {
+        flex-direction: column;
+    }
+
+    .searchDomainWrapper .right .infoBtn {
+        width: 100%;
+        font-size: 17px;
+    }
+
+    .tgIcon {
+        width: 100%;
+        border-radius: 20px;
+    }
+    
+    .tgBtn {
+        margin-top: 0;
+        margin-left: 8px;
+        margin-right: -9px;
     }
 }

@@ -1,6 +1,6 @@
 export function timeSince(date:Date) {
   //@ts-ignore
-  var seconds = Math.floor((new Date() - date) / 1000);
+  var seconds = Math.floor((new Date() - date) / 1000)*-1;
     var interval = seconds / 31536000;
   
     if (interval > 1) {
@@ -27,7 +27,7 @@ export function timeSince(date:Date) {
 
   export function timeAfter(date:Date) {
     //@ts-ignore
-    var seconds = Math.floor((new Date() - date) / 1000) * -1;
+    var seconds = Math.floor((new Date() - date) / 1000);
       var interval = seconds / 31536000;
     
       if (interval > 1) {

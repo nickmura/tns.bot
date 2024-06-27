@@ -1,4 +1,13 @@
 .container {
+  display: flex;
+  flex-direction: column;
+  max-height: 100vh;
+  min-height: 100vh;
+  max-width: 100%;
+  min-width: 100%;
+}
+
+.wrapper {
     display: grid; /* grid containers */
     grid-template-columns: repeat(4, 1fr); /* four columns */
     grid-template-rows: repeat(4, 1fr); /* four rows */

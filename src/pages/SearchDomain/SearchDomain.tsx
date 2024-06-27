@@ -11,6 +11,7 @@ import BidStatusRow from "./components/BidStatusRow/BidStatusRow";
 import SearchDomainHeader from "./components/SearchDomainHeader/SearchDomainHeader";
 import styles from "./SearchDomain.module.css";
 import { AppDispatch } from "../../store";
+import Navbar from "../../Layout/Navbar/Navbar";
 
 export default function SearchDomain() {
 	const { id } = useParams<{ id: string }>();
@@ -25,10 +26,10 @@ export default function SearchDomain() {
 	const searchId = id?.split(".ton")[0] //@ts-ignore
 	// console.log(state)
 	useEffect(() => {
-		if (searchId) {  //@ts-ignore
-			dispatch(fetchDomainInfo(searchId))
+		if (id) {  //@ts-ignore
+			dispatch(fetchDomainInfo(id))
 		}
-	}, [searchId])
+	}, [id])
 
 	useEffect(() => {
 		const datas = [tempDomainInfo]
@@ -39,7 +40,8 @@ export default function SearchDomain() {
 
 
 	return (
-		<>
+		<div >
+			{/* <Navbar/> */}
 			{
 				domainInfo?.map((data) => {
 					return (
@@ -50,7 +52,7 @@ export default function SearchDomain() {
 				})
 			}
 			<div className={styles.tableContainer}>
-				<label>Header</label>
+				<label>Bids</label>
 				<div className={styles.tableWrapper}>
 					<table className={styles.table}>
 						<thead className={styles.thead}>
@@ -78,7 +80,7 @@ export default function SearchDomain() {
 			</div>
 
 			<div className={styles.tableContainer}>
-				<label>Header</label>
+				<label>Additional Domains</label>
 				<div className={styles.tableWrapper}>
 					<table className={styles.table}>
 						<thead className={styles.thead}>
@@ -102,6 +104,6 @@ export default function SearchDomain() {
 					</table>
 				</div>
 			</div>
-		</>
+		</div>
 	);
 }

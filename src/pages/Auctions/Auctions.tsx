@@ -4,7 +4,6 @@
 import { useEffect, useState } from "react";
 import { useTonWallet } from "@tonconnect/ui-react";
 import { useDispatch, useSelector } from "react-redux";
-
 import { fetchLatestAuctions } from "../../slices/AuctionSlice";
 import AuctionRow from "./components/AuctionsRow/AuctionRow";
 import Filters from "../../Layout/Filters/Filters";
